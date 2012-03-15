@@ -38,9 +38,9 @@ done
 for CURRENT in $SRC ; do
    if [ ! -d ../$CURRENT ] ; then
       if [ $DEVELOPER = "true" ] ; then
-         git checkout git@github.com:isis-project/$CURRENT.git ../$CURRENT
+         git clone git@github.com:isis-project/$CURRENT.git ../$CURRENT
       else
-         git https://github.com/isis-project/$CURRENT.git ../$CURRENT
+         git clone https://github.com/isis-project/$CURRENT.git ../$CURRENT
       fi
    else
       echo found ../$CURRENT
