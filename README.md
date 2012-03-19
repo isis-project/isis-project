@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-These build instructions were tested using Ubuntu 10.04 64 bit. The following packages were installed:
+These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit. The following packages were installed:
 
 - g++
 - cmake
@@ -40,7 +40,7 @@ Check out and run the build scripts from Github. The QTDIR must be set to the lo
     $ cd isis-project
     $ ./build.sh -j 4
 
-The -j option for the build script specifies how man process to use when building.
+The -j option for the build script specifies how many process to use when building.
 
 ## Running the Isis Browser
 
