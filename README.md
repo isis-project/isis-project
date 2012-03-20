@@ -17,6 +17,10 @@ These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
 
 The Isis Browser requires Qt 4.8 built with QPA enabled.  Download Qt 4.8 from ftp://ftp.qt.nokia.com/qt/source/
 
+Make sure your system has at the minimum the following packages installed for compiling xlib:
+
+    $ sudo apt-get install libxi-dev fvwm libghc-x11-dev libxrandr-dev libxfixes-dev libxcursor-dev
+
 Configure Qt as follows:
 
     $ cd ./qt-everywhere-opensource-src-4.8.0
