@@ -6,17 +6,17 @@
 
 These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit. The following packages were installed:
 
-- g++
-- cmake
-- libglib2.0-dev
-- gperf
-- bison
-- libsqlite3-dev
-- libssl-dev
-- libxi-dev
-- libxrandr-dev
-- libxfixes-dev
-- libxcursor-dev
+* g++
+* cmake
+* libglib2.0-dev
+* gperf
+* bison
+* libsqlite3-dev
+* libssl-dev
+* libxi-dev
+* libxrandr-dev
+* libxfixes-dev
+* libxcursor-dev
 
 To install all these packages:
 
