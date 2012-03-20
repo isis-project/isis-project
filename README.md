@@ -12,6 +12,7 @@ These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
 - gperf
 - bison
 - libsqlite3-dev
+- libssl-dev
 
 ## Building Qt 4.8 with QPA
 

@@ -10,13 +10,14 @@ npapi-headers
 pbnjson
 AdapterBase
 WebKit
-BrowserAdapter
-BrowserServer
 WebKitSupplemental
+BrowserServer
+BrowserAdapter
 "
 
 DEVELOPER=false
-PROCCOUNT=1
+# Four is a good default.
+PROCCOUNT=4
 
 build_usage()
 {

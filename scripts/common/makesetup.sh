@@ -7,9 +7,13 @@ ROOT=$1
 NAME=$2
 PROCCOUNT=$3
 MAKENAME=$4
-
+MAKEINSTALL=$5
 if [ -n "$MAKENAME" ] ; then
    MAKENAME=.$MAKENAME
+fi
+
+if [ -z "$MAKEINSTALL" ] ; then
+   MAKEINSTALL=install
 fi
 
 cd $ROOT/$NAME
@@ -21,8 +25,7 @@ if [ "$?" != "0" ] ; then
    exit 1
 fi
 
-echo make -f Makefile$MAKENAME install
-make -f Makefile$MAKENAME install
+make -f Makefile$MAKENAME $MAKEINSTALL
 
 if [ "$?" != "0" ] ; then
    echo Failed to install $NAME
