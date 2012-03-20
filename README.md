@@ -13,14 +13,18 @@ These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
 - bison
 - libsqlite3-dev
 - libssl-dev
+- libxi-dev
+- libxrandr-dev
+- libxfixes-dev
+- libxcursor-dev
+
+To install all these packages:
+
+    $ sudo apt-get install g++ cmake libglib2.0-dev gperf bison libsqlite3-dev libssl-dev libxi-dev libxrandr-dev libxfixes-dev libxcursor-dev
 
 ## Building Qt 4.8 with QPA
 
 The Isis Browser requires Qt 4.8 built with QPA enabled.  Download Qt 4.8 from ftp://ftp.qt.nokia.com/qt/source/
-
-Make sure your system has at the minimum the following packages installed for compiling xlib:
-
-    $ sudo apt-get install libxi-dev fvwm libghc-x11-dev libxrandr-dev libxfixes-dev libxcursor-dev
 
 Configure Qt as follows:
 
