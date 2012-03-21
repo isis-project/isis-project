@@ -27,6 +27,8 @@ To install all these packages:
 
 The Isis Browser requires Qt 4.8 built with QPA enabled.  Download Qt 4.8 from ftp://ftp.qt.nokia.com/qt/source/
 
+Note that QTDIR should point to your Source folder where you downloaded qt-everywhere-opensource-src-4.8.0 since this source folder contains some private headers that do not get copied to /usr/local on an install.
+
 Configure Qt as follows:
 
     $ cd ./qt-everywhere-opensource-src-4.8.0
