@@ -24,13 +24,15 @@ build_usage()
    echo options:
    echo "	-d : enables developer mode. Code is checked out from github with read and write permissions"
    echo "	-j [Integer] : Enables multiprocess builds. Similar to make -j command"
+   echo "	-t [NAME] : Builds only named target"
 }
 
-while getopts dj: ARG
+while getopts dj:t: ARG
 do
    case "$ARG" in
    d) DEVELOPER=true;;
    j) PROCCOUNT=$OPTARG;;
+   t) SRC=$OPTARG;;
    [?]) build_usage
         exit -1;;
    esac
