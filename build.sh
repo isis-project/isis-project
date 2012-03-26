@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ -z "$QTDIR" ] ; then
-   echo Error: QTDIR must be set to location of Qt source which was used to build the installed version of Qt.
-   exit 1
+   export BUILD_QT=true
 fi
 
 SRC="
@@ -39,6 +38,14 @@ do
    esac
 done
 
+if [ $BUILD_QT = "true" ] ; then
+   if [ ! -d ../qt ] ; then
+      git clone -b 4.8 https://git.gitorious.org/qt/qt.git ../qt
+   else
+      echo found ../qt
+   fi
+fi
+
 for CURRENT in $SRC ; do
    if [ ! -d ../$CURRENT ] ; then
       if [ $DEVELOPER = "true" ] ; then
@@ -52,6 +59,15 @@ for CURRENT in $SRC ; do
 done
 
 cd ./scripts
+
+if [ $BUILD_QT = "true" ] ; then
+    ./build_qt.sh qt $PROCCOUNT
+    if [ "$?" != "0" ] ; then
+      echo Failed to build: qt
+      exit -1
+   fi
+fi
+
 for CURRENT in $SRC ; do
    if [ -x ./build_$CURRENT.sh ] ; then
       ./build_$CURRENT.sh $CURRENT $PROCCOUNT
@@ -64,3 +80,4 @@ for CURRENT in $SRC ; do
    fi
 done
 cd ..
+echo "Build completed :)"
