@@ -13,6 +13,8 @@ WebKit
 WebKitSupplemental
 BrowserServer
 BrowserAdapter
+isis-browser
+isis-test
 "
 
 DEVELOPER=false
