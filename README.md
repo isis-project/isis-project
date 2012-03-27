@@ -27,26 +27,20 @@ To install all these packages:
 
 The Isis Browser requires Qt 4.8 built with QPA enabled.  Download Qt 4.8 from ftp://ftp.qt.nokia.com/qt/source/
 
-Note that QTDIR should point to your Source folder where you downloaded qt-everywhere-opensource-src-4.8.0 since this source folder contains some private headers that do not get copied to /usr/local on an install.
+To install the Qt 4.8 source:
 
-Configure Qt as follows:
+    $ cd $HOME
+    $ tar xzvf ./Downloads/qt-everywhere-opensource-src-4.8.0.tar.gz
+    $ mkdir isis
+    $ mv qt-everywhere-opensource-src-4.8.0 ./isis/qt
 
-    $ cd ./qt-everywhere-opensource-src-4.8.0
-    $ ./configure -qpa -opensource -no-cups -no-nis -no-exceptions -no-accessibility -no-qt3support -no-xmlpatterns -no-multimedia -no-phonon -no-phonon-backend -no-webkit -confirm-license -make 'libs tools' -opengl desktop
-    $ make
-    $ pushd src/plugins/platforms/xlib
-    $ make
-    $ popd
-    $ sudo make install
-    $ sudo cp plugins/platforms/libqxlib.so /usr/local/Trolltech/QtLighthouse-4.8.0/plugins/platforms/
-
-Make certain that the qmake for Qt 4.8 with QPA is in your path.
+Note that QTDIR should not be set. Having QTDIR set will cause the build to fail.
 
 ## Building the Isis Browser
 
 Check out and run the build scripts from Github. The QTDIR must be set to the location of the Qt 4.8 source code built in the previous step. This enables WebKit  and the QPA plugin to find private Qt header files needed to build.
 
-    $ mkdir isis
+    $ cd $HOME
     $ cd isis
     $ git clone https://github.com/isis-project/isis-project.git
     $ cd isis-project
@@ -54,7 +48,11 @@ Check out and run the build scripts from Github. The QTDIR must be set to the lo
 
 ## Running the Isis Browser
 
-_TBD_
+    $ cd $HOME
+    $ cd isis/isis-project
+    $ ./run.sh
+    # In a separate terminal
+    $ ./browserserver.sh
 
 License
 -------
