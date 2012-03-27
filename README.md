@@ -27,18 +27,17 @@ Note that QTDIR should not be set. Having QTDIR set will cause the build to fail
 
 Check out and run the build scripts from Github.
 
-    $ cd $HOME
-    $ cd isis
+    $ cd $HOME/isis
     $ git clone https://github.com/isis-project/isis-project.git
     $ cd isis-project
     $ ./build.sh 
 
 ## Running the Isis Browser
 
-    $ cd $HOME
-    $ cd isis/isis-project
+    $ cd $HOME/isis/isis-project
     $ ./run.sh
     # In a separate terminal
+    $ cd $HOME/isis/isis-project
     $ ./browserserver.sh
 
 License
@@ -48,7 +47,7 @@ This code is released under the Apache 2.0 license.
 #### Copyright and License Information
 
 All content, including all source code files and documentation files in this repository are:
-Copyright (c) 2012 Hewlett-Packard Development Company, L.P.
+Copyright &copy; 2012 Hewlett-Packard Development Company, L.P.
 
 All content, including all source code files and documentation files in this repository are:
 Licensed under the Apache License, Version 2.0 (the "License");
