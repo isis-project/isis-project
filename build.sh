@@ -18,8 +18,7 @@ isis-test
 "
 
 DEVELOPER=false
-# Four is a good default.
-PROCCOUNT=4
+PROCCOUNT=$(grep -c processor /proc/cpuinfo)
 
 build_usage()
 {
