@@ -38,7 +38,7 @@ do
    esac
 done
 
-if [ $BUILD_QT = "true" ] ; then
+if [ "$BUILD_QT" = "true" ] ; then
    if [ ! -d ../qt ] ; then
       git clone -b 4.8 https://git.gitorious.org/qt/qt.git ../qt
       if [ "$?" != "0" ] ; then
