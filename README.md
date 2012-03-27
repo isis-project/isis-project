@@ -12,7 +12,7 @@ To install these packages:
 
 ## Installing Qt 4.8 Source
 
-The Isis Browser requires Qt 4.8 built with QPA enabled.  Download Qt 4.8 from the Nokia qt source archive: [ftp://ftp.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.8.0.tar.gz](ftp://ftp.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.8.0.tar.gz)
+The Isis Browser requires Qt 4.8 built with QPA enabled. Download Qt 4.8 from the Nokia qt source archive [ftp://ftp.qt.nokia.com/](ftp://ftp.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.8.0.tar.gz)
 
 To install the Qt 4.8 source:
 
@@ -25,7 +25,7 @@ Note that QTDIR should not be set. Having QTDIR set will cause the build to fail
 
 ## Building the Isis Browser
 
-Check out and run the build scripts from Github. The QTDIR must be set to the location of the Qt 4.8 source code built in the previous step. This enables WebKit  and the QPA plugin to find private Qt header files needed to build.
+Check out and run the build scripts from Github.
 
     $ cd $HOME
     $ cd isis
