@@ -12,6 +12,7 @@ WebKit
 WebKitSupplemental
 BrowserServer
 BrowserAdapter
+enyo-1.0
 isis-browser
 isis-test
 "
