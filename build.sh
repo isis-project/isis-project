@@ -41,6 +41,10 @@ done
 if [ $BUILD_QT = "true" ] ; then
    if [ ! -d ../qt ] ; then
       git clone -b 4.8 https://git.gitorious.org/qt/qt.git ../qt
+      if [ "$?" != "0" ] ; then
+         echo Failed to checkout: qt
+         exit -1
+      fi
    else
       echo found ../qt
    fi
@@ -52,6 +56,10 @@ for CURRENT in $SRC ; do
          git clone git@github.com:isis-project/$CURRENT.git ../$CURRENT
       else
          git clone https://github.com/isis-project/$CURRENT.git ../$CURRENT
+      fi
+      if [ "$?" != "0" ] ; then
+         echo Failed to checkout: $CURRENT
+         exit -1
       fi
    else
       echo found ../$CURRENT
