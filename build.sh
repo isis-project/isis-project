@@ -2,8 +2,6 @@
 
 if [ -z "$QTDIR" ] ; then
    export BUILD_QT=true
-else
-   export BUILD_QT=false
 fi
 
 SRC="
@@ -62,7 +60,7 @@ done
 
 cd ./scripts
 
-if [ $BUILD_QT = "true" ] ; then
+if [ "$BUILD_QT" = "true" ] ; then
     ./build_qt.sh qt $PROCCOUNT
     if [ "$?" != "0" ] ; then
       echo Failed to build: qt
@@ -72,7 +70,7 @@ fi
 
 for CURRENT in $SRC ; do
    if [ -x ./build_$CURRENT.sh ] ; then
-      echo Building $CURRENT
+      echo building $CURRENT
       ./build_$CURRENT.sh $CURRENT $PROCCOUNT
       if [ "$?" != "0" ] ; then
          echo Failed to build: $CURRENT

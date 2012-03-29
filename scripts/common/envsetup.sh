@@ -2,6 +2,7 @@
 
 QMAKE=qmake
 STARTDIR=$PWD
+BUILD_QT=${BUILD_QT:-"false"}
 
 while [ "$PWD" != "/" -a "$ISIS_ROOT" = "" ] ; do
    if [ -d ./isis-project ] ; then
@@ -15,7 +16,7 @@ echo $ISIS_ROOT
 
 export LUNA_STAGING=$ISIS_ROOT/staging
 
-if [ $BUILD_QT = "true" ] ; then
+if [ "$BUILD_QT" = "true" ] ; then
    export QTDIR=$ISIS_ROOT/qt
    QMAKE=$LUNA_STAGING/bin/qmake
 fi
