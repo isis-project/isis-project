@@ -11,7 +11,7 @@ cd $ROOT/$NAME
 
 MAKEFILE=Makefile.$NAME
 
-qmake "DEFINES += ISIS_DESKTOP" $NAME.pro -o Makefile.$NAME
+$QMAKE "DEFINES+=ISIS_DESKTOP" $NAME.pro -o Makefile.$NAME
 
 if [ "$?" != "0" ] ; then
    echo Failed to qmake $NAME
