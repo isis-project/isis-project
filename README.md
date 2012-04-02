@@ -10,19 +10,6 @@ To install these packages:
 
     $ sudo apt-get install g++ cmake libglib2.0-dev gperf bison libsqlite3-dev libssl-dev libxi-dev libxrandr-dev libxfixes-dev libxcursor-dev libfreetype6-dev libxinerama-dev
 
-## Installing Qt 4.8 Source
-
-The Isis Browser requires Qt 4.8 built with QPA enabled. Download Qt 4.8 from the Nokia qt source archive [ftp://ftp.qt.nokia.com/](ftp://ftp.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.8.0.tar.gz)
-
-To install the Qt 4.8 source:
-
-    $ cd $HOME
-    $ tar xzvf ./Downloads/qt-everywhere-opensource-src-4.8.0.tar.gz
-    $ mkdir isis
-    $ mv qt-everywhere-opensource-src-4.8.0 ./isis/qt
-
-Note that QTDIR should not be set. Having QTDIR set will cause the build to fail.
-
 ## Building the Isis Browser
 
 Check out and run the build scripts from Github.
