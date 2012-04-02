@@ -14,7 +14,7 @@ To install these packages:
 
 Check out and run the build scripts from Github.
 
-    $ cd $HOME/
+    $ cd $HOME
     $ mkdir isis
     $ cd ./isis
     $ git clone https://github.com/isis-project/isis-project.git
