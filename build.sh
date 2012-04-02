@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [ -z "$QTDIR" ] ; then
-   export BUILD_QT=true
-fi
+ISIS_PROJECT=$(cd `dirname $0` && pwd)
+. $ISIS_PROJECT/scripts/common/envsetup.sh
 
 SRC="
 npapi-headers
@@ -39,17 +38,7 @@ do
    esac
 done
 
-if [ "$BUILD_QT" = "true" ] ; then
-   if [ ! -d ../qt ] ; then
-      git clone -b 4.8 https://git.gitorious.org/qt/qt.git ../qt
-      if [ "$?" != "0" ] ; then
-         echo Failed to checkout: qt
-         exit -1
-      fi
-   else
-      echo found ../qt
-   fi
-fi
+get_qt
 
 for CURRENT in $SRC ; do
    if [ ! -d ../$CURRENT ] ; then
@@ -58,10 +47,7 @@ for CURRENT in $SRC ; do
       else
          git clone https://github.com/isis-project/$CURRENT.git ../$CURRENT
       fi
-      if [ "$?" != "0" ] ; then
-         echo Failed to checkout: $CURRENT
-         exit -1
-      fi
+      [ "$?" == "0" ] || fail "Failed to checkout: $CURRENT"
    else
       echo found ../$CURRENT
    fi
@@ -69,22 +55,14 @@ done
 
 cd ./scripts
 
-if [ "$BUILD_QT" = "true" ] ; then
-    ./build_qt.sh qt $PROCCOUNT
-    if [ "$?" != "0" ] ; then
-      echo Failed to build: qt
-      exit -1
-   fi
-fi
+./build_qt.sh qt $PROCCOUNT
+[ "$?" == "0" ] || fail 'Failed to build:qt'
 
 for CURRENT in $SRC ; do
    if [ -x ./build_$CURRENT.sh ] ; then
       echo building $CURRENT
       ./build_$CURRENT.sh $CURRENT $PROCCOUNT
-      if [ "$?" != "0" ] ; then
-         echo Failed to build: $CURRENT
-         exit -1
-      fi
+      [ "$?" == "0" ] || fail "Failed to build: $CURRENT"
    else
       echo No build script for $CURRENT
    fi
