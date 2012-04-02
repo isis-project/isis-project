@@ -68,4 +68,8 @@ for CURRENT in $SRC ; do
    fi
 done
 cd ..
-echo "Build completed :)"
+echo ""
+echo "============================================"
+echo "Isis-Browser build completed"
+echo "============================================"
+echo ""
