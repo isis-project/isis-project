@@ -14,7 +14,9 @@ To install these packages:
 
 Check out and run the build scripts from Github.
 
-    $ cd $HOME/isis
+    $ cd $HOME/
+    $ mkdir isis
+    $ cd ./isis
     $ git clone https://github.com/isis-project/isis-project.git
     $ cd isis-project
     $ ./build.sh 
@@ -23,6 +25,7 @@ Check out and run the build scripts from Github.
 
     $ cd $HOME/isis/isis-project
     $ ./run.sh
+
     # In a separate terminal
     $ cd $HOME/isis/isis-project
     $ ./browserserver.sh
