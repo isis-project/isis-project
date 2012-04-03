@@ -8,27 +8,32 @@ These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
 
 To install these packages:
 
-    $ sudo apt-get install g++ cmake libglib2.0-dev gperf bison libsqlite3-dev libssl-dev libxi-dev libxrandr-dev libxfixes-dev libxcursor-dev libfreetype6-dev libxinerama-dev
+    sudo apt-get install g++ cmake libglib2.0-dev gperf bison libsqlite3-dev libssl-dev libxi-dev libxrandr-dev libxfixes-dev libxcursor-dev libfreetype6-dev libxinerama-dev
 
 ## Building the Isis Browser
 
 Check out and run the build scripts from Github.
 
-    $ cd $HOME
-    $ mkdir isis
-    $ cd ./isis
-    $ git clone https://github.com/isis-project/isis-project.git
-    $ cd isis-project
-    $ ./build.sh 
+    cd $HOME
+    mkdir isis
+    cd ./isis
+    git clone https://github.com/isis-project/isis-project.git
+    cd isis-project
+    ./build.sh 
 
 ## Running the Isis Browser
 
-    $ cd $HOME/isis/isis-project
-    $ ./run.sh
+    cd $HOME/isis/isis-project
+    ./run.sh
 
-    # In a separate terminal
-    $ cd $HOME/isis/isis-project
-    $ ./browserserver.sh
+## Running the Isis Browser and BrowserServer Separately
+
+    cd $HOME/isis/isis-project
+    ./run.sh -b false
+
+    # in a separate terminal
+    cd $HOME/isis/isis-project
+    ./browserserver.sh
 
 License
 -------
