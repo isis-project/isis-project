@@ -12,7 +12,19 @@ export QT_PLUGIN_PATH=`readlink -f ../staging/plugins`
 
 echo $LIBPATH
 
-#cd ../isis-test
-#./isis-test -platform xlib
+build_usage()
+{
+   echo options:
+   echo "	-d : Launches BrowserServer in the debugger."
+}
 
-../staging/bin/BrowserServer
+while getopts d ARG
+do
+   case "$ARG" in
+   d) DEBUGGER="gdb --args ";;
+   [?]) build_usage
+        exit -1;;
+   esac
+done
+
+$DEBUGGER../staging/bin/BrowserServer

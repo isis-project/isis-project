@@ -14,12 +14,14 @@ build_usage()
 {
    echo options:
    echo "	-b : [true/false] Launches BrowserServer, defaults to true."
+   echo "	-d : Launches isis-test in the debugger."
 }
 
-while getopts b ARG
+while getopts b:d ARG
 do
    case "$ARG" in
    b) START_BS=$OPTARG;;
+   d) DEBUGGER="gdb --args ";;
    [?]) build_usage
         exit -1;;
    esac
@@ -40,7 +42,7 @@ if [ "$START_BS" = "true" ] ; then
 fi
 
 cd ../isis-test
-./isis-test -platform xlib
+$DEBUGGER./isis-test -platform xlib
 
 if [ -n "$BSPID" ] ; then
     echo Stopping BrowserServer
