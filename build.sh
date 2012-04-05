@@ -1,7 +1,12 @@
 #!/bin/bash
 
-ISIS_PROJECT=$(cd `dirname $0` && pwd)
-. $ISIS_PROJECT/scripts/common/envsetup.sh
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+ISIS_PROJECT="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+cd $ISIS_PROJECT
+
+. ./scripts/common/envsetup.sh
 
 SRC="
 npapi-headers

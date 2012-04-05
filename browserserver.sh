@@ -1,5 +1,11 @@
 #!/bin/bash
 
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+ISIS_PROJECT="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+cd $ISIS_PROJECT
+
 LIBPATH=`readlink -f ../staging/lib`
 
 if [ -z "$LD_LIBRARY_PATH" ] ; then
