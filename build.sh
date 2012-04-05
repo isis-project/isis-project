@@ -1,5 +1,11 @@
 #!/bin/bash
 
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+cd $DIR
+
 ISIS_PROJECT=$(cd `dirname $0` && pwd)
 . $ISIS_PROJECT/scripts/common/envsetup.sh
 
