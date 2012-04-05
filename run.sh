@@ -2,9 +2,9 @@
 
 SOURCE="${BASH_SOURCE[0]}"
 while [ -L "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
-DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+ISIS_PROJECT="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-cd $DIR
+cd $ISIS_PROJECT
 
 LIBPATH=`readlink -f ../staging/lib`
 

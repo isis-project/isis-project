@@ -1,8 +1,14 @@
 #!/bin/bash
 
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+ISIS_PROJECT="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+cd $ISIS_PROJECT
+
 . ./scripts/common/envsetup.sh
 
-build_usage()
+print_usage()
 {
    echo options:
    echo "	-t [NAME] : Update only named target"
@@ -17,7 +23,7 @@ do
    case "$ARG" in
    t) SRC=$OPTARG;;
    g) GITCMD=$OPTARG;;
-   [?]) build_usage
+   [?]) print_usage
         exit -1;;
    esac
 done
@@ -33,6 +39,3 @@ done
 
 echo ===========================
 echo Done
-
-cd $STARTDIR
-
