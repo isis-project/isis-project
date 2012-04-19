@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ./common/envsetup.sh
 
@@ -11,7 +11,10 @@ cd $ISIS_ROOT/$NAME
 
 export QMAKEPATH=$ISIS_ROOT/WebKit/Tools/qmake
 
-$QMAKE $NAME.pro -o Makefile.$NAME DEFINES+=XP_UNIX DEFINES+=XP_WEBOS DEFINES+=PALM_DEVICE DEFINES+=MACHINE_DESKTOP DEFINES+=QT_WEBOS DEFINES+=ENABLE_VIDEO=0 CONFIG+=release
+mkdir -p WebKitBuild/isis-x86/Release
+pushd WebKitBuild/isis-x86/Release
+
+$QMAKE ../../../$NAME.pro -o Makefile.$NAME DEFINES+=XP_UNIX DEFINES+=XP_WEBOS DEFINES+=PALM_DEVICE DEFINES+=MACHINE_DESKTOP DEFINES+=QT_WEBOS DEFINES+=ENABLE_VIDEO=0 CONFIG+=release
 
 if [ "$?" != "0" ] ; then
    echo Failed to qmake $NAME
@@ -33,6 +36,7 @@ for FILE in *.h ; do
    cp $ISIS_ROOT/$NAME/Source/WebKit/qt/Api/$FILE $LUNA_STAGING/include/QtWebKit/$FILE
 done
 
+popd
 if [ ! -z "$PACKAGE" ]; then
     cd $ISIS_ROOT/$NAME
     dpkg-buildpackage -rfakeroot
