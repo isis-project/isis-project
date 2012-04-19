@@ -18,4 +18,8 @@ cmake . -DCMAKE_INSTALL_PREFIX=$LUNA_STAGING -DCMAKE_BUILD_TYPE=RELEASE
 make -j$PROCCOUNT
 make install
 
-cd $STARTDIR
+if [ ! -z "$PACKAGE" ]; then
+    cd ..
+    dpkg-buildpackage -rfakeroot
+    cd $STARTDIR
+fi

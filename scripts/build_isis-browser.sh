@@ -1,13 +1,11 @@
 #!/bin/sh
 
 . ./common/envsetup.sh
-
-. ./common/qmakesetup.sh
-
-build_target $ISIS_ROOT $1 $2
+. ./common/makesetup.sh
 
 if [ ! -z "$PACKAGE" ]; then
-    cd $ISIS_ROOT/$NAME
+    cd $ISIS_ROOT/$1
+    ls
     dpkg-buildpackage -rfakeroot
     cd $STARTDIR
 fi

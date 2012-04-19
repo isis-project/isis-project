@@ -32,3 +32,9 @@ for FILE in *.h ; do
    echo $FILE
    cp $ISIS_ROOT/$NAME/Source/WebKit/qt/Api/$FILE $LUNA_STAGING/include/QtWebKit/$FILE
 done
+
+if [ ! -z "$PACKAGE" ]; then
+    cd $ISIS_ROOT/$NAME
+    dpkg-buildpackage -rfakeroot
+    cd $STARTDIR
+fi

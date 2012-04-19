@@ -4,4 +4,8 @@
 
 . ./common/qmakesetup.sh
 
-build_target $ISIS_ROOT $1 $2
+if [ ! -z "$PACKAGE" ]; then
+    build_target $ISIS_ROOT $1 $2 $PACKAGE
+else
+    build_target $ISIS_ROOT $1 $2 
+fi

@@ -27,17 +27,22 @@ PROCCOUNT=$(grep -c processor /proc/cpuinfo)
 build_usage()
 {
    echo options:
-   echo "	-d : enables developer mode. Code is checked out from github with read and write permissions"
-   echo "	-j [Integer] : Enables multiprocess builds. Similar to make -j command"
-   echo "	-t [NAME] : Builds only named target"
+   echo "	-d            : enables developer mode. Code is checked out from github with read and write permissions"
+   echo "	-j [Integer]  : Enables multiprocess builds. Similar to make -j command"
+   echo "	-t [NAME]     : Builds only named target"
+   echo "	-p [NAME/all] : Packages the named target in debian format. all will debianize the isis project."
 }
 
-while getopts dj:t: ARG
+while getopts dj:t:p: ARG
 do
    case "$ARG" in
    d) DEVELOPER=true;;
    j) PROCCOUNT=$OPTARG;;
    t) SRC=$OPTARG;;
+   p) export PACKAGE=deb
+     if [ $OPTARG != "all" ] ; then
+         SRC=$OPTARG 
+     fi;;
    [?]) build_usage
         exit -1;;
    esac
@@ -66,7 +71,13 @@ cd ./scripts
 for CURRENT in $SRC ; do
    if [ -x ./build_$CURRENT.sh ] ; then
       echo building $CURRENT
-      ./build_$CURRENT.sh $CURRENT $PROCCOUNT
+      if [ ! -z "$PACKAGE" ]; then
+          echo "Package Instructions for $SRC"
+          ./build_$CURRENT.sh $CURRENT $PROCCOUNT $PACKAGE
+      else
+          ./build_$CURRENT.sh $CURRENT $PROCCOUNT
+      fi
+      #./build_$CURRENT.sh $CURRENT $PROCCOUNT
       [ "$?" == "0" ] || fail "Failed to build: $CURRENT"
    else
       echo No build script for $CURRENT

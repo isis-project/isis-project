@@ -6,6 +6,7 @@ build_target()
 ROOT=$1
 NAME=$2
 PROCCOUNT=$3
+PACKAGE=$4
 
 cd $ROOT/$NAME
 
@@ -30,6 +31,10 @@ make -f Makefile.$NAME install
 if [ "$?" != "0" ] ; then
    echo Failed to install $NAME
    exit 1
+fi
+
+if [ ! -z "$PACKAGE" ]; then 
+    make -f Makefile.$NAME $PACKAGE
 fi
 
 }

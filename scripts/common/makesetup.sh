@@ -8,6 +8,7 @@ NAME=$2
 PROCCOUNT=$3
 MAKENAME=$4
 MAKEINSTALL=$5
+MAKEPACKAGE=$6
 
 if [ -n "$MAKENAME" ] ; then
    MAKENAME=.$MAKENAME
@@ -31,6 +32,10 @@ make -f Makefile$MAKENAME $MAKEINSTALL
 if [ "$?" != "0" ] ; then
    echo Failed to install $NAME
    exit 1
+fi
+
+if [ ! -z "$PACKAGE" ]; then
+    make -f Makefile$MAKENAME $MAKEPACKAGE
 fi
 
 }
