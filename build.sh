@@ -19,6 +19,7 @@ BrowserAdapter
 enyo-1.0
 isis-browser
 isis-test
+qmlbrowser
 "
 
 DEVELOPER=false
