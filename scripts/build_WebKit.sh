@@ -28,6 +28,8 @@ if [ "$?" != "0" ] ; then
    exit 1
 fi
 
+mkdir -p $LUNA_STAGING/imports
+cp -p -R imports/QtWebKit $LUNA_STAGING/imports/
 cp lib/libQtWebKit.so* $LUNA_STAGING/lib
 cp -R include/QtWebKit $LUNA_STAGING/include
 cd include/QtWebKit
