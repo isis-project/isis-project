@@ -9,6 +9,7 @@ cd $ISIS_PROJECT
 . ./scripts/common/envsetup.sh
 
 SRC="
+isis-fonts
 npapi-headers
 pbnjson
 AdapterBase
