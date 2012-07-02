@@ -53,15 +53,23 @@ done
 get_qt
 
 for CURRENT in $SRC ; do
-   if [ ! -d ../$CURRENT ] ; then
+   REPO=$(echo $CURRENT | awk -F: '{print $1}')
+   USER=$(echo $CURRENT | awk -F: '{print $2}')
+   USER=${USER:-isis-project}
+   BRANCHARG=""
+   BRANCH=$(echo $CURRENT | awk -F: '{print $3}')
+   if [ "$BRANCH" != "" ]; then
+       BRANCHARG="-b ${BRANCH}"
+   fi
+   if [ ! -d ../$REPO ] ; then
       if [ $DEVELOPER = "true" ] ; then
-         git clone git@github.com:isis-project/$CURRENT.git ../$CURRENT
+         git clone $BRANCHARG git@github.com:$USER/$REPO.git ../$REPO
       else
-         git clone https://github.com/isis-project/$CURRENT.git ../$CURRENT
+         git clone $BRANCHARG https://github.com/$USER/$REPO.git ../$REPO
       fi
-      [ "$?" == "0" ] || fail "Failed to checkout: $CURRENT"
+      [ "$?" == "0" ] || fail "Failed to checkout: $REPO"
    else
-      echo found ../$CURRENT
+      echo found ../$REPO
    fi
 done
 
@@ -71,18 +79,19 @@ cd ./scripts
 [ "$?" == "0" ] || fail 'Failed to build:qt'
 
 for CURRENT in $SRC ; do
-   if [ -x ./build_$CURRENT.sh ] ; then
-      echo building $CURRENT
+   REPO=`echo $CURRENT | awk -F':' '{print $1}'`
+   if [ -x ./build_$REPO.sh ] ; then
+      echo building $REPO
       if [ ! -z "$PACKAGE" ]; then
           echo "Package Instructions for $SRC"
-          ./build_$CURRENT.sh $CURRENT $PROCCOUNT $PACKAGE
+          ./build_$REPO.sh $REPO $PROCCOUNT $PACKAGE
       else
-          ./build_$CURRENT.sh $CURRENT $PROCCOUNT
+          ./build_$REPO.sh $REPO $PROCCOUNT
       fi
-      #./build_$CURRENT.sh $CURRENT $PROCCOUNT
-      [ "$?" == "0" ] || fail "Failed to build: $CURRENT"
+      #./build_$REPO.sh $REPO $PROCCOUNT
+      [ "$?" == "0" ] || fail "Failed to build: $REPO"
    else
-      echo No build script for $CURRENT
+      echo No build script for $REPO
    fi
 done
 cd ..
