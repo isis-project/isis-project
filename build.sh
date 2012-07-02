@@ -17,7 +17,7 @@ WebKit
 WebKitSupplemental
 BrowserServer
 BrowserAdapter
-enyo-1.0
+enyo-1.0:isis-project:add-argument-haveBrowserAdapter
 isis-browser
 isis-test
 qmlbrowser
