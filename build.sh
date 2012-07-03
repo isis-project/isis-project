@@ -9,6 +9,7 @@ cd $ISIS_PROJECT
 . ./scripts/common/envsetup.sh
 
 SRC="
+qt:openwebos
 isis-fonts
 npapi-headers
 pbnjson
@@ -50,8 +51,6 @@ do
    esac
 done
 
-get_qt
-
 for CURRENT in $SRC ; do
    REPO=$(echo $CURRENT | awk -F: '{print $1}')
    USER=$(echo $CURRENT | awk -F: '{print $2}')
@@ -74,9 +73,6 @@ for CURRENT in $SRC ; do
 done
 
 cd ./scripts
-
-./build_qt.sh qt $PROCCOUNT
-[ "$?" == "0" ] || fail 'Failed to build:qt'
 
 for CURRENT in $SRC ; do
    REPO=`echo $CURRENT | awk -F':' '{print $1}'`
