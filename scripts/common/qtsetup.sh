@@ -5,12 +5,12 @@ QMAKE=$LUNA_STAGING/bin/qmake
 
 qt_download()
 {
-   local QT_FTP="ftp://ftp.qt.nokia.com/qt/source"
-   local QT_SRC="qt-everywhere-opensource-src-4.8.1"
+   local QT_HTTP="http://releases.qt-project.org/qt4/source"
+   local QT_SRC="qt-everywhere-opensource-src-4.8.2"
    local QT_TGZ="$QT_SRC.tar.gz"
 
-   echo downloading Qt from: $QT_FTP/$QT_TGZ
-   curl -C - $QT_FTP/$QT_TGZ -o $ISIS_ROOT/$QT_TGZ
+   echo downloading Qt from: $QT_HTTP/$QT_TGZ
+   curl -C - $QT_HTTP/$QT_TGZ -o $ISIS_ROOT/$QT_TGZ
    [ "$?" == "0" ] || fail "Failed to download: $QT_TGZ"
 
    echo Extracting $QT_TGZ
