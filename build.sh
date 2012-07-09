@@ -25,21 +25,24 @@ qmlbrowser
 
 DEVELOPER=false
 PROCCOUNT=$(grep -c processor /proc/cpuinfo)
+MIRROR=""
 
 build_usage()
 {
    echo options:
    echo "	-d            : enables developer mode. Code is checked out from github with read and write permissions"
    echo "	-j [Integer]  : Enables multiprocess builds. Similar to make -j command"
+   echo "	-m [mirror]   : Fetch from a mirror for faster builds (example: -m github-mirror.mycompany.com)"
    echo "	-t [NAME]     : Builds only named target"
    echo "	-p [NAME/all] : Packages the named target in debian format. all will debianize the isis project."
 }
 
-while getopts dj:t:p: ARG
+while getopts dj:t:p:m: ARG
 do
    case "$ARG" in
    d) DEVELOPER=true;;
    j) PROCCOUNT=$OPTARG;;
+   m) MIRROR=$OPTARG;;
    t) SRC=$OPTARG;;
    p) export PACKAGE=deb
      if [ $OPTARG != "all" ] ; then
@@ -62,10 +65,25 @@ for CURRENT in $SRC ; do
        BRANCHARG="-b ${BRANCH}"
    fi
    if [ ! -d ../$REPO ] ; then
-      if [ $DEVELOPER = "true" ] ; then
-         git clone $BRANCHARG git@github.com:$USER/$REPO.git ../$REPO
+      if [ "$MIRROR" != "" ]; then
+          git clone $BRANCHARG -o mirror git://$MIRROR/$USER/$REPO.git ../$REPO
+          pushd ../$REPO
+          if [ $DEVELOPER = "true" ] ; then
+              git remote add origin git@github.com:$USER/$REPO.git
+          else
+              git remote add origin https://github.com/$USER/$REPO.git
+          fi
+          git fetch origin
+          branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
+          branch_name=${branch_name##refs/heads/}
+          git config branch.$branch_name.remote origin
+          popd
       else
-         git clone $BRANCHARG https://github.com/$USER/$REPO.git ../$REPO
+          if [ $DEVELOPER = "true" ] ; then
+              git clone $BRANCHARG git@github.com:$USER/$REPO.git ../$REPO
+          else
+              git clone $BRANCHARG https://github.com/$USER/$REPO.git ../$REPO
+          fi
       fi
       [ "$?" == "0" ] || fail "Failed to checkout: $REPO"
    else
