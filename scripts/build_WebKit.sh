@@ -15,6 +15,7 @@ export WEBKITOUTPUTDIR="WebKitBuild/isis-x86"
 ./Tools/Scripts/build-webkit --qt \
 --release \
 --video \
+--fullscreen-api \
 --no-webgl \
 --no-webkit2 \
 --qmake="${QMAKE}" \
