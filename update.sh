@@ -12,10 +12,10 @@ print_usage()
 {
    echo options:
    echo "	-t [NAME] : Update only named target"
-   echo "	-g [CMD]  : Command to pass to git, defaults to 'pull'"
+   echo "	-g [CMD]  : Command to pass to git, defaults to 'pull --all'"
 }
 
-GITCMD=pull
+GITCMD="pull --all"
 SRC="`/bin/ls -1 $ISIS_ROOT`"
 
 while getopts t:g: ARG
