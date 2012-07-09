@@ -20,6 +20,6 @@ export QTWEBKIT_PLUGIN_PATH=`readlink -f ../staging/lib/BrowserPlugins`
 echo $LIBPATH
 
 cd ../qmlbrowser/qmlbrowser
-./webbrowser -platform xlib
+./webbrowser -platform xlib $1
 
 
