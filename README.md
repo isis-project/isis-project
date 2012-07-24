@@ -1,19 +1,37 @@
-# Building The Isis Browser for Linux Desktop
-
-** Note: This is a work in progress. **
-
-## Prerequisites
-
-These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
-The following packages are required: g++, cmake, libglib2.0-dev, gperf, bison,
-libsqlite3-dev, libssl-dev, libxi-dev, libxrandr-dev, libxfixes-dev, libxcursor-dev,
-libfreetype6-dev, libxinerama-dev, git-core, curl, libgl1-mesa-dev, libgstreamer0.10-dev,
-libgstreamer-plugins-base0.10-dev, flex, and libicu-dev.
 
 
-To install these packages:
+## Isis Browser
 
-    sudo apt-get install g++ cmake libglib2.0-dev gperf bison libsqlite3-dev libssl-dev libxi-dev libxrandr-dev libxfixes-dev libxcursor-dev libfreetype6-dev libxinerama-dev git-core curl libgl1-mesa-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev flex libicu-dev
+Open webOS uses a version of QtWebKit to render web pages and applications. Code-named, "Isis-Project", it uses a client-server model that separates the rendering process from the user interface. This architectural approach delivers smooth scrolling and a responsive user experience. The Isis Browser uses the highly portable QT framework with the goal of delivering a cross-platform browser in the future.
+
+## How to Build on Linux
+
+# Dependencies
+
+Below are the tools and libraries (and their minimum versions) required to build the Isis Browser. These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
+
+* g++
+* cmake
+* libglib2.0-dev
+* gperf
+* bison
+* libsqlite3-dev
+* libssl-dev
+* libxi-dev
+* libxrandr-dev
+* libxfixes-dev
+* libxcursor-dev
+* libfreetype6-dev
+* libxinerama-dev
+* git-core
+* curl
+* libgl1-mesa-dev
+* libgstreamer0.10-dev
+* libgstreamer-plugins-base0.10-dev
+* flex
+* libicu-dev
+
+To install these packages, use "sudo apt-get install".
 
 ## Building the Isis Browser
 
