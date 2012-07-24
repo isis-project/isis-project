@@ -4,9 +4,9 @@
 
 Open webOS uses a version of QtWebKit to render web pages and applications. Code-named, "Isis-Project", it uses a client-server model that separates the rendering process from the user interface. This architectural approach delivers smooth scrolling and a responsive user experience. The Isis Browser uses the highly portable QT framework with the goal of delivering a cross-platform browser in the future.
 
-## How to Build on Linux
+# How to Build on Linux
 
-# Dependencies
+## Dependencies
 
 Below are the tools and libraries (and their minimum versions) required to build the Isis Browser. These build instructions were tested using Ubuntu 10.04 and Ubuntu 11.10 64 bit.
 
