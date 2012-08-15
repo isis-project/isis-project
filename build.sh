@@ -19,8 +19,6 @@ BrowserServer
 BrowserAdapter
 enyo-1.0:enyojs
 isis-browser
-isis-test
-qmlbrowser
 "
 
 DEVELOPER=false

@@ -31,7 +31,8 @@ Below are the tools and libraries (and their minimum versions) required to build
 * flex
 * libicu-dev
 
-To install these packages, use "sudo apt-get install".
+    sudo apt-get install g++ cmake libglib2.0-dev gperf  bison  libsqlite3-dev  libssl-dev  libxi-dev  libxrandr-dev  libxfixes-dev  libxcursor-dev  libfreetype6-dev  libxinerama-dev  git-core  curl  libgl1-mesa-dev  libgstreamer0.10-dev  libgstreamer-plugins-base0.10-dev  flex  libicu-dev
+
 
 ## Building the Isis Browser
 
