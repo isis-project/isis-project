@@ -1,5 +1,4 @@
 
-
 ## Isis Browser
 
 Open webOS uses a version of QtWebKit to render web pages and applications. Code-named, "Isis-Project", it uses a client-server model that separates the rendering process from the user interface. This architectural approach delivers smooth scrolling and a responsive user experience. The Isis Browser uses the highly portable QT framework with the goal of delivering a cross-platform browser in the future.
@@ -44,7 +43,17 @@ Check out and run the build scripts from Github.
     git clone https://github.com/isis-project/isis-project.git
     cd isis-project
     ./build.sh 
+    
+### NOTE - If build fails on BrowserServer
 
+If the BrowserServer build is failing with the following error :
+    BrowserServer/Src/BrowserPage.h:42:23: fatal error: pbnjson.hpp: No such file or directory 
+
+in the isis-project folder ('$HOME/isis/isis-project') run the command,
+    ./build.sh -t pbnjson
+followed by
+    ./build.sh
+    
 ## Running the Isis Browser
 
     cd $HOME/isis/isis-project
