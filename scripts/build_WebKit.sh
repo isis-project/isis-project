@@ -19,7 +19,7 @@ export WEBKITOUTPUTDIR="WebKitBuild/isis-x86"
 --no-webgl \
 --no-webkit2 \
 --qmake="${QMAKE}" \
---makeargs="-j$PROCOUNT" \
+--makeargs="-j$PROCCOUNT" \
 --qmakearg="DEFINES+=XP_UNIX" \
 --qmakearg="DEFINES+=XP_WEBOS" \
 --qmakearg="DEFINES+=PALM_DEVICE" \
